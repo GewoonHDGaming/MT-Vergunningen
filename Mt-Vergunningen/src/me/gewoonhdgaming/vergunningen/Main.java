@@ -342,6 +342,58 @@ else if (cmd.getName().equalsIgnoreCase("bank") && sender instanceof Player){
 			}
 			return true;
 		}
+		
+
+		
+else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
+	
+	Player p = (Player) sender;
+	if (args.length == 0) {
+		if (p.hasPermission("uniq.medewerker")) {
+			p.sendMessage(ChatColor.RED + "----{MagicTopia bewijzen systeem}----");
+			p.sendMessage("/uniq verkoop - Verkoop een uniq product");
+			p.sendMessage(ChatColor.RED + "--------------------------------------");
+	}
+	}			
+	else if (args[0].equalsIgnoreCase("verkoop")) {
+		if (p.hasPermission("uniq.medewerker")) {
+			if(args.length < 4) {
+				p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /uniq verkoop <datum>1 <item>2 <bedrag in nummers>3 <player>4!");
+			} else {
+				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+				
+				BookMeta meta = (BookMeta) book.getItemMeta();
+				meta.setTitle(ChatColor.RED + "Uniq Item: " + ChatColor.BOLD + args[4]);
+				meta.setAuthor(ChatColor.AQUA + "GHEServer ");
+				ArrayList<String> lore = new ArrayList<String>();
+				lore.add("Uniq item van: " + args[4]);
+				lore.add("Datum: " + args[1]);
+				lore.add("Bedrag: " + args[3] + "Coins");
+				meta.setLore(lore);
+				meta.addPage(
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + args[6] + "\nAankoop\n=-=-=-=-=-=-=-=-=-=\n" +
+					    ChatColor.BLACK + "Aankoper: " + ChatColor.RED + args[4] + "\n" +
+						ChatColor.BLACK + "Uitgifte Datum: " + ChatColor.RED + args[1] + "\n" +
+						ChatColor.BLACK + "Verkoper: " + ChatColor.RED + p.getName() + "\n" +
+						ChatColor.BLACK + "Item:" + ChatColor.RED + args[2],
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + args[6] + "\nAankoop\n=-=-=-=-=-=-=-=-=-=\n" + 
+						ChatColor.BLACK + "Betaald bedrag: " + ChatColor.RED + args[3] + ChatColor.BLACK + " Coins" + "\n" +
+						ChatColor.BLACK + "Verkocht door: " + ChatColor.RED + p.getName() ,
+						ChatColor.RED + "Dit document bied u een eeuwigdurende, altijd geldende en bindende verklaring van aankoop van het uniq product! Bewaar dit document goed", 
+				        ChatColor.RED + "Dit is het bewijs dat u dit Uniq product officieel hebt aangekocht in de uniq shop\n" + 
+				        ChatColor.BLACK + "Met vriendelijke groet, \n" + ChatColor.RED + p.getName());
+				book.setItemMeta(meta);
+				p.getInventory().addItem(book);
+				p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Uniq" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Uniq Aankoopbewijs" + ChatColor.AQUA + " ontvangen!");
+			}
+	}
+	}
+
+	else {
+		p.sendMessage(ChatColor.RED + "Er is wat fout gegaan!");
+	}
+	return true;
+}
 		return false; 
 		
 	}
