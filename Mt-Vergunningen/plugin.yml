@@ -1,0 +1,61 @@
+name: Mt-Vergunningen
+main: me.gewoonhdgaming.vergunningen.Main
+version: 1.0.0
+author: boykev
+website: www.gewoonhdgaming.nl
+commands:
+   vergunningen:
+      description: Main commando voor de vergunningen plugin
+      usage: /<command>
+      aliases: [verg]
+      permission: vergunning.default
+   gemeente:
+      description: Main commando voor de bewijzen plugin
+      usage: /<command>
+   bank:
+      description: Main commando voor de bank plugin
+      usage: /<command>
+permissions:
+    vergunning.*:
+        description: Toegang tot alle commando's van de audioclient
+        children:
+            vergunning.default: true
+            vergunning.wapen: true
+            vergunning.overig: true
+            vergunning.plot: true
+            vergunning.kelder: true
+    bewijs.*:
+        description: Toegang tot alle commando's van de audioclient
+        children:
+            bewijs.default: true
+            bewijs.id: true
+            bewijs.kvk: true
+            bewijs.vog: true
+            bewijs.plotoverdracht: true
+    vergunning.kelder:
+        description: Geeft rechten voor de kelder vergunningen
+        default: op
+    vergunning.wapen:
+        description: Geeft rechten voor de wapen vergunningen
+        default: op
+    vergunning.overig:
+        description: Geeft rechten voor de overige vergunningen
+        default: op
+    vergunning.plot:
+        description: Geeft rechten voor de plot vergunningen
+        default: op
+    bewijs.id:
+        description: Geeft rechten voor de plot vergunningen
+        default: op
+    bewijs.kvk:
+        description: Geeft rechten voor de plot vergunningen
+        default: op
+    bewijs.vog:
+        description: Geeft rechten voor de plot vergunningen
+        default: op
+    bewijs.plotoverdracht:
+        description: Geeft rechten voor de plot vergunningen
+        default: op
+    bank.lening:
+        description: Geeft rechten voor de bank leningen
+        default: op
