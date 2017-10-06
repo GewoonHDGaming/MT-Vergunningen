@@ -58,7 +58,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /vergunningen plot <plotnummer> <gemeente> <eigenaar>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "Plotver. " + args[1]);
@@ -81,7 +81,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /vergunningen kelder <plotnummer> <gemeente> <eigenaar>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "Kelderverg. " + args[1]);
@@ -104,7 +104,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 5) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /vergunningen wapen <eigenaar> <gemeente> <wapentype> <reden>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "Wapenverg. " + args[1]);
@@ -128,7 +128,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /vergunningen overig <type> <gemeente> <eigenaar>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + args[1] + "verg. ");
@@ -171,7 +171,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /gemeente id <datum> <gemeente> <eigenaar>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "ID: " + ChatColor.BOLD + args[3]);
@@ -199,7 +199,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 5) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /gemeente kvk <datum> <gemeente> <eigenaar> <bedrijfsnaam>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "KvK " + args[4]);
@@ -227,7 +227,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /gemeente VOG <Positief/Negatief> <speler> <gemeente> <datum>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "VOG " + args[2]);
@@ -256,7 +256,7 @@ public class Main extends JavaPlugin {
 					if(args.length < 6) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /gemeente plotoverdracht <datum> <gemeente> <nieuwe eigenaar> <plotnummer> <oude eigenaar>!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "Plotoverdr. " + args[4]);
@@ -307,7 +307,7 @@ else if (cmd.getName().equalsIgnoreCase("bank") && sender instanceof Player){
 					if(args.length < 4) {
 						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /bank lening <datum>1 <leeftijd>2 <bedrag>3 <lener>4 <termijn>5 <woonplaats>6!");
 					} else {
-						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 						
 						BookMeta meta = (BookMeta) book.getItemMeta();
 						meta.setTitle(ChatColor.RED + "Lening: " + ChatColor.BOLD + args[4]);
@@ -352,6 +352,7 @@ else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
 		if (p.hasPermission("uniq.medewerker")) {
 			p.sendMessage(ChatColor.RED + "----{MagicTopia bewijzen systeem}----");
 			p.sendMessage("/uniq verkoop - Verkoop een uniq product");
+			p.sendMessage("/uniq lootcrate - Verkoop een uniq lootcrate");
 			p.sendMessage(ChatColor.RED + "--------------------------------------");
 	}
 	}			
@@ -359,8 +360,9 @@ else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
 		if (p.hasPermission("uniq.medewerker")) {
 			if(args.length < 4) {
 				p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /uniq verkoop <datum>1 <item>2 <bedrag in nummers>3 <player>4!");
+				p.sendMessage(ChatColor.BLUE + "Let op gebruik een" + ChatColor.YELLOW + " _ " + ChatColor.BLUE + "als spatie!");
 			} else {
-				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 1);
+				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
 				
 				BookMeta meta = (BookMeta) book.getItemMeta();
 				meta.setTitle(ChatColor.RED + "Uniq Item: " + ChatColor.BOLD + args[4]);
@@ -371,12 +373,12 @@ else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
 				lore.add("Bedrag: " + args[3] + "Coins");
 				meta.setLore(lore);
 				meta.addPage(
-						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + args[6] + "\nAankoop\n=-=-=-=-=-=-=-=-=-=\n" +
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + "\nAankoop\n=-=-=-=-=-=-=-=\n" +
 					    ChatColor.BLACK + "Aankoper: " + ChatColor.RED + args[4] + "\n" +
 						ChatColor.BLACK + "Uitgifte Datum: " + ChatColor.RED + args[1] + "\n" +
 						ChatColor.BLACK + "Verkoper: " + ChatColor.RED + p.getName() + "\n" +
 						ChatColor.BLACK + "Item:" + ChatColor.RED + args[2],
-						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + args[6] + "\nAankoop\n=-=-=-=-=-=-=-=-=-=\n" + 
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + "\nAankoop\n=-=-=-=-=-=-=-=\n" + 
 						ChatColor.BLACK + "Betaald bedrag: " + ChatColor.RED + args[3] + ChatColor.BLACK + " Coins" + "\n" +
 						ChatColor.BLACK + "Verkocht door: " + ChatColor.RED + p.getName() ,
 						ChatColor.RED + "Dit document bied u een eeuwigdurende, altijd geldende en bindende verklaring van aankoop van het uniq product! Bewaar dit document goed", 
@@ -385,6 +387,40 @@ else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
 				book.setItemMeta(meta);
 				p.getInventory().addItem(book);
 				p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Uniq" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Uniq Aankoopbewijs" + ChatColor.AQUA + " ontvangen!");
+			}
+	}
+	}
+	else if (args[0].equalsIgnoreCase("lootcrate")) {
+		if (p.hasPermission("uniq.medewerker")) {
+			if(args.length < 4) {
+				p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /uniq lootcrate <datum>1 <aantal crates>2 <bedrag in nummers>3 <player>4!");
+				p.sendMessage(ChatColor.BLUE + "Let op gebruik een" + ChatColor.YELLOW + " _ " + ChatColor.BLUE + "als spatie!");
+			} else {
+				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
+				
+				BookMeta meta = (BookMeta) book.getItemMeta();
+				meta.setTitle(ChatColor.RED + "Uniq Lootcrate: " + ChatColor.BOLD + args[4]);
+				meta.setAuthor(ChatColor.AQUA + "GHEServer ");
+				ArrayList<String> lore = new ArrayList<String>();
+				lore.add("Uniq lootcrate van: " + args[4]);
+				lore.add("Datum: " + args[1]);
+				lore.add("Bedrag: " + args[3] + "Coins");
+				meta.setLore(lore);
+				meta.addPage(
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + "\nAankoop\n=-=-=-=-=-=-=-=\n" +
+					    ChatColor.BLACK + "Aankoper: " + ChatColor.RED + args[4] + "\n" +
+						ChatColor.BLACK + "Uitgifte Datum: " + ChatColor.RED + args[1] + "\n" +
+						ChatColor.BLACK + "Verkoper: " + ChatColor.RED + p.getName() + "\n" +
+						ChatColor.BLACK + "Aantal Crates:" + ChatColor.RED + args[2],
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Uniq " + "\nAankoop\n=-=-=-=-=-=-=-=\n" + 
+						ChatColor.BLACK + "Betaald bedrag: " + ChatColor.RED + args[3] + ChatColor.BLACK + " Coins" + "\n" +
+						ChatColor.BLACK + "Verkocht door: " + ChatColor.RED + p.getName() ,
+						ChatColor.RED + "Dit document bied u een eeuwigdurende, altijd geldende en bindende verklaring van aankoop van de uniq lootcrate (3Items)! Bewaar dit document goed", 
+				        ChatColor.RED + "Dit is het bewijs dat u officieel een uniq lootcrate hebt geopend in de server\n" + 
+				        ChatColor.BLACK + "Met vriendelijke groet, \n" + ChatColor.RED + p.getName());
+				book.setItemMeta(meta);
+				p.getInventory().addItem(book);
+				p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Uniq" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Uniq Lootcratebewijs" + ChatColor.AQUA + " ontvangen!");
 			}
 	}
 	}

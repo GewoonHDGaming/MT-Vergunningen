@@ -15,7 +15,7 @@ commands:
    bank:
       description: Main commando voor de bank plugin
       usage: /<command>
-   unq:
+   uniq:
       description: Main commando voor de uniq plugin
       usage: /<command>
 permissions:
