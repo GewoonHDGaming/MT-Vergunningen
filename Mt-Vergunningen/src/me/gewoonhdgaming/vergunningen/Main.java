@@ -299,6 +299,7 @@ else if (cmd.getName().equalsIgnoreCase("bank") && sender instanceof Player){
 				if (p.hasPermission("bewijs.default")) {
 					p.sendMessage(ChatColor.RED + "----{MagicTopia bewijzen systeem}----");
 					p.sendMessage("/bank lening - Maak een lening");
+					p.sendMessage("/bank afbetaling - Maak een afbetaling");
 					p.sendMessage(ChatColor.RED + "--------------------------------------");
 			}
 			}			
@@ -333,6 +334,38 @@ else if (cmd.getName().equalsIgnoreCase("bank") && sender instanceof Player){
 						book.setItemMeta(meta);
 						p.getInventory().addItem(book);
 						p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Bank" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Lening Boekje" + ChatColor.AQUA + " ontvangen!");
+					}
+			}
+			}
+			else if (args[0].equalsIgnoreCase("afbetaling")) {
+				if (p.hasPermission("bank.lening")) {
+					if(args.length < 4) {
+						p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /bank afbetaling <datum>1 <leeftijd>2 <bedrag>3 <lener>4!");
+					} else {
+						ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
+						
+						BookMeta meta = (BookMeta) book.getItemMeta();
+						meta.setTitle(ChatColor.RED + "Afbetaling: " + ChatColor.BOLD + args[4]);
+						meta.setAuthor(ChatColor.AQUA + "Banksysteem");
+						ArrayList<String> lore = new ArrayList<String>();
+						lore.add("Afbetaling van: " + args[4]);
+						lore.add("Datum: " + args[1]);
+						lore.add("Bedrag: " + args[3] + "€");
+						meta.setLore(lore);
+						meta.addPage(
+								ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Bank " + "\nAfbetaling\n=-=-=-=-=-=-=-=-=-=\n" +
+							    ChatColor.BLACK + "Naam: " + ChatColor.RED + args[4] + "\n" +
+								ChatColor.BLACK + "Afbetaal Datum: " + ChatColor.RED + args[1] + "\n" +
+								ChatColor.BLACK + "Betaald door: " + ChatColor.RED + p.getName() + "\n" +
+								ChatColor.BLACK + "Leeftijd:" + ChatColor.RED + args[2],
+								ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Bank " + "\nLening\n=-=-=-=-=-=-=-=-=-=\n" + 
+								ChatColor.BLACK + "Betaald Bedrag: " + ChatColor.RED + args[3] + ChatColor.BLACK + " €" + "\n" + "\n",
+								ChatColor.RED + "Dit boekje mag niet worden nagemaakt door ombevoegde. Met deze lening ga je accoord dat: als de lening niet kan terug betalen word deze stop gezet en je bezittingen in beslag genomen. U komt in het systeem te staan als lening trekker. U bent niet-", 
+						        ChatColor.RED + "Meer bevoegd om geld te lenen voor de komende 6 maanden. U kunt ook een celstraf/boete oplopen met misbruik/Oneerlijke verklaring.\n" + 
+						        ChatColor.BLACK + "Met vriendelijke groet, \n" + ChatColor.RED + p.getName());
+						book.setItemMeta(meta);
+						p.getInventory().addItem(book);
+						p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Bank" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Afbetaling Boekje" + ChatColor.AQUA + " ontvangen!");
 					}
 			}
 			}
