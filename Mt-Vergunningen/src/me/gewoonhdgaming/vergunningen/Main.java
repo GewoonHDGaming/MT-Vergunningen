@@ -463,6 +463,89 @@ else if (cmd.getName().equalsIgnoreCase("uniq") && sender instanceof Player){
 	}
 	return true;
 }
+		
+else if (cmd.getName().equalsIgnoreCase("overheid") && sender instanceof Player){
+	
+	Player p = (Player) sender;
+	if (args.length == 0) {
+		if (p.hasPermission("overheid.medewerker")) {
+			p.sendMessage(ChatColor.RED + "----{MagicTopia bewijzen systeem}----");
+			p.sendMessage("/overheid partij - Maak een politieke partij");
+			p.sendMessage("/overheid partijlid - Maak een politieke partijlid aan");
+			p.sendMessage(ChatColor.RED + "--------------------------------------");
+	}
+	}			
+	else if (args[0].equalsIgnoreCase("partij")) {
+		if (p.hasPermission("overheid.medewerker")) {
+			if(args.length < 4) {
+				p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /overheid partij <datum>1 <Partijnaam>2 <Afkorting>3 <Standpunt>4 <Beheerder>5!");
+				p.sendMessage(ChatColor.BLUE + "Let op gebruik een" + ChatColor.YELLOW + " _ " + ChatColor.BLUE + "als spatie!");
+			} else {
+				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
+				
+				BookMeta meta = (BookMeta) book.getItemMeta();
+				meta.setTitle(ChatColor.RED + "Politieke Partij: " + ChatColor.BOLD + args[3]);
+				meta.setAuthor(ChatColor.AQUA + "Rijksoverheid");
+				ArrayList<String> lore = new ArrayList<String>();
+				lore.add("Politieke Partij: " + args[2]);
+				lore.add("Afkorting: " + args[3]);
+				lore.add("Beheerder: " + args[5]);
+				meta.setLore(lore);
+				meta.addPage(
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Politieke " + "\nPartij\n=-=-=-=-=-=-=-=\n" +
+					    ChatColor.BLACK + "Partijnaam: " + ChatColor.RED + args[2] + "\n" +
+						ChatColor.BLACK + "Afkorting: " + ChatColor.RED + args[3] + "\n" +
+						ChatColor.BLACK + "Standpunt: " + ChatColor.RED + args[4] + "\n" +
+						ChatColor.BLACK + "Startdatum: " + ChatColor.RED + args[1],
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Politieke " + "\nPartij\n=-=-=-=-=-=-=-=\n" + 
+						ChatColor.RED + "Dit document bewijst dat u een officiele politieke partij hebt opgericht en dat deze is", 
+				        ChatColor.RED + "goedgekeurd door de staat. U bezit nu alle rechten voor een politieke partij\n" + 
+				        ChatColor.BLACK + "Hoogachtend Zijne Presidentschap, \n" + ChatColor.AQUA + "Boykev");
+				book.setItemMeta(meta);
+				p.getInventory().addItem(book);
+				p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Overheid" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Polieke Partij" + ChatColor.AQUA + " ontvangen!");
+			}
+	}
+	}
+	else if (args[0].equalsIgnoreCase("partijlid")) {
+		if (p.hasPermission("overheid.medewerker")) {
+			if(args.length < 4) {
+				p.sendMessage(ChatColor.BLUE + "Je gebruikt het commando niet correct! Gebruik: /overheid partijlid <datum>1 <Partijnaam>2 <Afkorting>3 <Functie>4 <Speler>5!");
+				p.sendMessage(ChatColor.BLUE + "Let op gebruik een" + ChatColor.YELLOW + " _ " + ChatColor.BLUE + "als spatie!");
+			} else {
+				ItemStack book = new ItemStack(Material.WRITTEN_BOOK, 2);
+				
+				BookMeta meta = (BookMeta) book.getItemMeta();
+				meta.setTitle(ChatColor.RED + "Politieke Partijlid: " + ChatColor.BOLD + args[3]);
+				meta.setAuthor(ChatColor.AQUA + "Rijksoverheid");
+				ArrayList<String> lore = new ArrayList<String>();
+				lore.add("Politieke Partij: " + args[2]);
+				lore.add("Afkorting: " + args[3]);
+				lore.add("Functie: " + args[4]);
+				meta.setLore(lore);
+				meta.addPage(
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Politieke " + "\nPartij\n=-=-=-=-=-=-=-=\n" +
+						ChatColor.BLACK + "Naam: " + ChatColor.RED + args[5] + "\n" +
+					    ChatColor.BLACK + "Partijnaam: " + ChatColor.RED + args[2] + "\n" +
+						ChatColor.BLACK + "Afkorting: " + ChatColor.RED + args[3] + "\n" +
+						ChatColor.BLACK + "Functie: " + ChatColor.RED + args[4] + "\n" +
+						ChatColor.BLACK + "Startdatum: " + ChatColor.RED + args[1],
+						ChatColor.BLACK + "=-=-=-=-=-=-=-=-=-=\n" + "Politieke " + "\nPartij\n=-=-=-=-=-=-=-=\n" + 
+						ChatColor.RED + "Dit document bewijst dat u een officiele politieke partij hebt opgericht en dat deze is", 
+				        ChatColor.RED + "goedgekeurd door de staat. U bezit nu alle rechten voor een politieke partij\n" + 
+				        ChatColor.BLACK + "Hoogachtend Zijne Presidentschap, \n" + ChatColor.AQUA + "Boykev");
+				book.setItemMeta(meta);
+				p.getInventory().addItem(book);
+				p.sendMessage(ChatColor.WHITE + "[" + ChatColor.RED + "Overheid" + ChatColor.WHITE + "] " + ChatColor.AQUA + "Je hebt een " + ChatColor.RED + "Polieke Partij" + ChatColor.AQUA + " ontvangen!");
+			}
+	}
+	}
+
+	else {
+		p.sendMessage(ChatColor.RED + "Er is wat fout gegaan!");
+	}
+	return true;
+}
 		return false; 
 		
 	}

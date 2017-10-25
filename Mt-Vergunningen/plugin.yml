@@ -18,6 +18,9 @@ commands:
    uniq:
       description: Main commando voor de uniq plugin
       usage: /<command>
+   overheid:
+      description: Main commando voor de uniq plugin
+      usage: /<command>
 permissions:
     vergunning.*:
         description: Toegang tot alle commando's van de audioclient
